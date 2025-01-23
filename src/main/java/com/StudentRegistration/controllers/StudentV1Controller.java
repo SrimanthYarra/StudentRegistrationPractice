@@ -1,6 +1,5 @@
 package com.StudentRegistration.controllers;
 
-import com.StudentRegistration.Entities.StudentResults;
 import com.StudentRegistration.Models.StudentMarks;
 import com.StudentRegistration.Services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;

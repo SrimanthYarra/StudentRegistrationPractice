@@ -23,8 +23,8 @@ public class RestResponseEntityHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorMessage genericErrorMessage(Exception exception){
-        return new ErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR,exception.getMessage());
+        return new ErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR, "not found");
     }
 }

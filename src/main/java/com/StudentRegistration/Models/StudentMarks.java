@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class StudentMarks {
 
-    @JsonIgnore
+
     private int id;
     private String studentName;
     private int totalMarks;

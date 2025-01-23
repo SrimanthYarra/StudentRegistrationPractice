@@ -2,6 +2,7 @@ package com.StudentRegistration.Services;
 
 import com.StudentRegistration.Exceptions.StudentNotFoundException;
 import com.StudentRegistration.Models.StudentMarks;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,14 +16,8 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public StudentMarks save(StudentMarks studentMarks) {
-        if(studentMarks.getId()==null){
-            int id=generateId();
-            if(students.stream().filter(student -> student.getId() == id).toList().isEmpty()){
-                studentMarks.setId(id);
-            }else{
-                save(studentMarks);
-            }
-        }
+        int id=generateId();
+        studentMarks.setId(id);
         students.add(studentMarks);
         return studentMarks;
     }
@@ -34,8 +29,7 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public StudentMarks findById(int id)  {
-        return students.stream().filter(student->student.getId()==id).findFirst()
-                .orElseThrow(()->new StudentNotFoundException("Student not found with id: "+id));
+        return students.stream().filter(student->student.getId()==id).findFirst().orElseThrow();
     }
 
     @Override
@@ -53,7 +47,7 @@ public class StudentServiceImpl implements StudentService{
     }
 
     public int generateId(){
-        return new Random().nextInt(1000);
+        return new Random().nextInt(1,1000);
     }
 
     

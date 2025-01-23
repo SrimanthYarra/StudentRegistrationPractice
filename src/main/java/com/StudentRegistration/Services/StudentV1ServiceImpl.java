@@ -1,7 +1,6 @@
 package com.StudentRegistration.Services;
 
 import com.StudentRegistration.Entities.StudentResults;
-import com.StudentRegistration.Exceptions.StudentNotFoundException;
 import com.StudentRegistration.Models.StudentMarks;
 import com.StudentRegistration.Repositories.StudentResultsRepository;
 import org.springframework.beans.BeanUtils;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class StudentV1ServiceImpl implements StudentService{
@@ -23,6 +21,7 @@ public class StudentV1ServiceImpl implements StudentService{
         StudentResults studentResults=new StudentResults();
         BeanUtils.copyProperties(studentMarks,studentResults);
         studentResultsRepository.save(studentResults);
+        studentMarks.setId(studentResults.getId());
         return studentMarks;
     }
 

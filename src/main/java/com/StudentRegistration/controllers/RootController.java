@@ -22,7 +22,7 @@ public class RootController {
     }
 
     @GetMapping("/{id}")
-    public String student(@PathVariable String  id){
+    public String student(@PathVariable("id") String  id){
         return "The Path variable is "+id;
     }
 
